@@ -25,7 +25,7 @@ jobs:
       - name: "Executar comandos remotos via SSH"
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOST }}
+          host: "184.73.229.124"
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
