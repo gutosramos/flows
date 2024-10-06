@@ -21,15 +21,3 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
           target: "/home/ubuntu/www/src/"
-
-      - name: "Executar comandos remotos via SSH"
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: "184.73.229.124"
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd /home/ubuntu/www/src/
-            docker-compose down
-            docker-compose build
-            docker-compose up -d
