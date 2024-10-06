@@ -28,7 +28,6 @@ jobs:
           host: "184.73.229.124"
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
           script: |
             cd /home/ubuntu/www/src/
             docker-compose down
