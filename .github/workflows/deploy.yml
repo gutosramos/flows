@@ -28,6 +28,7 @@ jobs:
             username: "ubuntu"
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
+                cd "/home/ubuntu/www/"
                 docker-compose down &&
                 docker-compose build &&
                 docker-compose up -d
