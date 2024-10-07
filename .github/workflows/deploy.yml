@@ -15,17 +15,17 @@ jobs:
       - name: "Copiar arquivos para ec2"
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: "184.73.229.124"
+          host: ${{ secrets.HOST_SERVER }}
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
-          target: "/home/ubuntu/www/src/"
+          target: ${{ secrets.EC2_SISTEM }}
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
         with:
-            host: "184.73.229.124"
-            username: "ubuntu"
+            host: ${{ secrets.HOST_SERVER }}
+            username: ${{ secrets.EC2_USER }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             script: |
                 cd "/home/ubuntu/www/"
