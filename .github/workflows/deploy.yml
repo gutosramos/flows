@@ -19,7 +19,7 @@ jobs:
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
-          target: /docker/point-system/
+          target: "/home/ubuntu/www/src/"
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
