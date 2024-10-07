@@ -1,5 +1,4 @@
 name: "Deploy para vps"
-
 on:
   push:
     branches:
@@ -10,14 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Baixar o código"
+      - name: "Baixar o codigo"
         uses: actions/checkout@v4
 
-      - name: "Copiar arquivos para EC2"
+      - name: "Copiar arquivos para ec2"
         uses: appleboy/scp-action@v0.1.7
         with:
           host: "184.73.229.124"
           username: "ubuntu"
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
-          target: "/home/ubuntu/www/src/"
+          target: /docker/point-system/
+
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+            host: "184.73.229.124"
+            username: "ubuntu"
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            script: |
+                docker-compose down &&
+                docker-compose build &&
+                docker-compose up -d
